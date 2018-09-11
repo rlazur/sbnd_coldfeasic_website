@@ -1,0 +1,5 @@
+jinja2
+yasha
+python-dateutil
+click
+psycopg2

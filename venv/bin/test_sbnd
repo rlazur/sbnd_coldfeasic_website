@@ -1,0 +1,12 @@
+#!/home/rlazur/sbnd_webpage_build/venv/bin/python3
+# EASY-INSTALL-ENTRY-SCRIPT: 'sbnd-cege','console_scripts','test_sbnd'
+__requires__ = 'sbnd-cege'
+import re
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
+    sys.exit(
+        load_entry_point('sbnd-cege', 'console_scripts', 'test_sbnd')()
+    )

@@ -1,0 +1,45 @@
+{% include 'header.html.j2' %}
+
+{% set reltoroot = '..' %}
+
+<script type="text/javascript" class="init">
+	$(document).ready(function() {
+	$('#summary').DataTable( {
+		paging:	 true
+	} );
+	} );
+	</script>
+
+<h1>Summary of the Cold Electronic FE ASIC Testing</h1>
+Listed below is the most basic list of runs, FE ASIC chips, and boards involved. Search through the data table below and click on any element to further investigate information associated with that run, chip, or board.
+
+
+<h2>Results</h2>
+<table id="summary" class="display" width="100%" cellspacing="0">
+       <thread>
+       <tr>
+		<th>Run ID</th>
+		<th>Board ID</th>
+		<th>ASIC 1</th>
+		<th>ASIC 2</th>
+		<th>ASIC 3</th>
+		<th>ASIC 4</th>
+	</tr>
+	</thread>
+
+	<tbody>
+		{% for run in summary_list -%}
+		<tr>
+			<td><a href="{{reltoroot}}/runid/{{run.runid}}"> {{run.runid}} </a></td>
+			<td><a href="{{reltoroot}}/boardid/{{run.boardid}}"> {{run.boardid}} </a></td>
+			<td><a href="{{reltoroot}}/asicid/{{run.asic0}}"> {{run.asic0}} </a></td>
+			<td><a href="{{reltoroot}}/asicid/{{run.asic1}}"> {{run.asic1}} </a></td>
+			<td><a href="{{reltoroot}}/asicid/{{run.asic2}}"> {{run.asic2}} </a></td>
+			<td><a href="{{reltoroot}}/asicid/{{run.asic3}}"> {{run.asic3}} </a></td>
+		</tr>
+	{% endfor -%}
+	</tbody>
+	
+</table>
+	
+{% include 'footer.html.j2' %}

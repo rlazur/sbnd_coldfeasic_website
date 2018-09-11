@@ -1,0 +1,13 @@
+{% include 'header.html.j2' %}
+
+<input type="text" id="myInput" onkeyup="SearchBar()" placeholder="Search for chip..">
+
+<h1>FE ASICs</h1>
+
+<ul>
+  {% for chip in chips %}
+  <li><a href="{{chip}}">{{chip}}</a></li>
+  {% endfor %}
+</ul>
+
+{% include 'footer.html.j2' %}

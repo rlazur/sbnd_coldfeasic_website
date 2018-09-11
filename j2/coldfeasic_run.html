@@ -1,0 +1,51 @@
+{% set reltoroot = '../..' %}
+{% include 'header.html.j2' %}
+
+<script type="text/javascript" class="init">
+  $(document).ready(function() {
+    $('#summary').DataTable();
+      } );
+        </script>
+
+
+<h1>Summary of Run {{runid}}</h1>
+
+<ul>
+  <li>Board <a href="{{reltoroot}}/boardid/{{boardid}}">{{boardid}}</a></li>
+  <li>Chips</li>
+  <ul>
+    {% for chip in chips -%}
+    <li><a href="{{reltoroot}}/asicid/{{chip}}">{{chip}}</a></li>
+    {% endfor %}
+  </ul>
+</ul>
+
+<table id="summary" class="display" width="100%" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Gain</th>
+      <th>Shape</th>
+      <th>Base</th>
+      {% for chip in chips -%}
+      <th>{{chip}}</th>
+      {% endfor -%}
+    </tr>
+  </thead>
+  <tbody>
+    {% for method in methods -%}
+    <tr>
+      <td>{{method.method_name}}</td>
+      <td>{{method.gain}}</td>
+      <td>{{method.shape}}</td>
+      <td>{{method.base}}</td>
+      {% for result in method.results -%}
+      <td><a href="{{result.png}}">{{result.result}}</a></td>
+      {% endfor -%}
+    </tr>
+    {% endfor -%}
+  </tbody>
+</table>
+
+{% include 'footer.html.j2' %}
+

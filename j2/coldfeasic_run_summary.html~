@@ -1,0 +1,12 @@
+{% include 'header.html.j2' %}
+
+<h1>Runs</h1>
+<div>
+  <ul id="summary">
+    {% for run in runs %}
+    <li><a href="{{run}}">{{run}}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% include 'footer.html.j2' %}

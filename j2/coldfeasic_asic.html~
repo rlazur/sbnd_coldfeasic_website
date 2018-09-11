@@ -1,0 +1,33 @@
+{% set reltoroot = '../..' %}
+
+{% include 'header.html.j2' %}
+
+<script type="text/javascript" class="init">
+  $(document).ready(function() {
+    $('#summary').DataTable();
+      } );
+</script>
+
+<h1>FE ASIC {{chip}}</h1>
+
+<table id="summary" class="display" width="100%" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Run</th>
+      <th>Board</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {% for run in runs %}
+      <td><a href="{{reltoroot}}/runid/{{run.runid}}">{{run.runid}}</a></td>
+      <td><a href="{{reltoroot}}/boardid/{{run.boardid}}">{{run.boardid}}</a></td>
+      <td>{{run.result}}</td>
+      {% endfor %}
+    </tr>
+  </tbody>
+</table>
+
+{% include 'footer.html.j2' %}
+      

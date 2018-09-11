@@ -1,0 +1,31 @@
+import helpers.sbnd_coldFeAsic as sbnd
+import os
+import sys
+from jinja2 import Template, Environment, FileSystemLoader
+from glob import glob
+from helpers import io, prep
+from pprint import pprint #for printing out dictionaries
+
+HTML_BASE = '/home/rlazur/public_html/coldFeAsic'
+
+def main():
+    print("starting...")
+
+    prep.confirm_path(HTML_BASE)
+
+    summary_list, master_run_dict, master_chip_dict, master_board_dict = sbnd.clean_summary()
+    
+    rates_dict = prep.prep_rates(master_chip_dict)
+
+    env = Environment(loader=FileSystemLoader('j2'))
+    template_obj = env.get_template('coldfeasic_testingrates.html.j2')
+
+    with open('../public_html/coldFeAsic/testingrates/index.html', 'w') as html_file:
+        text = template_obj.render()
+        html_file.write(rates_dict)
+    
+    print("...finished")
+
+
+if __name__ == "__main__":
+    main()

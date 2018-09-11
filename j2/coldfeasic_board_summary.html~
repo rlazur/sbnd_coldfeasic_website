@@ -1,0 +1,11 @@
+{% include 'header.html.j2' %}
+
+
+
+<h1>FEMBs</h1>
+
+<ul>
+  {% for board in boards %}
+  <li><a href="{{board.boardid}}">{{board.boardid}}</a></li>
+  {% endfor %}
+</ul>

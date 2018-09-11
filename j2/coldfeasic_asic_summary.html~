@@ -1,0 +1,11 @@
+{% include 'header.html.j2' %}
+
+<h1>FE ASICs</h1>
+
+<ul>
+  {% for chip in chips %}
+  <li><a href="{{chip}}">{{chip}}</a></li>
+  {% endfor %}
+</ul>
+
+{% include 'footer.html.j2' %}

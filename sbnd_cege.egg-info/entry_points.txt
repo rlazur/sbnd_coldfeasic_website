@@ -1,0 +1,4 @@
+[console_scripts]
+build = build.main:main
+test_sbnd = build.tester:main
+

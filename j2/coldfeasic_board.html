@@ -1,0 +1,37 @@
+{% set reltoroot = '../..' %}
+
+{% include 'header.html.j2' %}
+
+<script type="text/javascript" class="init">
+  $(document).ready(function() {
+  $('#summary').DataTable();
+  } );
+</script>
+
+<h1>Board {{boardid}}</h1>
+
+Note: The chips weren't necessarily positioned in the board in the same order that they are listed here
+
+<table id="summary" class="display" width="100%" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Run</th>
+      <th>ASIC 1</th>
+      <th>ASIC 2</th>
+      <th>ASIC 3</th>
+      <th>ASIC 4</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for run in runs -%}
+    <tr>
+      <td><a href="{{reltoroot}}/runid/{{run.runid}}">{{run.runid}}</a></td>
+      {% for chip in run.chips -%}
+      <td><a href="{{reltoroot}}/asicid/{{chip.name}}">{{chip.name}}</a></td>
+      {% endfor -%}
+    </tr>
+    {% endfor -%}
+  </tbody>
+</table>
+
+{% include 'footer.html.j2' %}

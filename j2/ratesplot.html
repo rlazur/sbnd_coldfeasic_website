@@ -1,0 +1,55 @@
+<body>
+  <div id = "container" style = "width: 1050px; height: 400px; margin: 0 auto"></div>
+  <script language = "JavaScript">
+    Highcharts.chart('container', {
+    chart: {
+    type: 'area'
+    },
+    title: {
+    text: 'Testing Rates of SBND FE ASICs'
+    },
+    subtitle: {
+    text: 'USing the CTS system by MSU'
+    },
+    xAxis: {
+    categories: {{days}},
+    tickmarkPlacement: 'on',
+    title: {
+    text: 'days (from June 25th)'
+    }
+    },
+    yAxis: {
+    title: {
+    text: 'chips'
+    },
+    labels: {
+    formatter: function () {
+    return this.value;
+    }
+    }
+    },
+    tooltip: {
+    split: true,
+    valueSuffix: ''
+    },
+    plotOptions: {
+    area: {
+    stacking: 'normal',
+    lineColor: '#666666',
+    lineWidth: 1,
+    marker: {
+    lineWidth: 1,
+    lineColor: '#666666'
+    }
+    }
+    },
+    series: [{
+    name: 'Pass',
+    data: {{pass}}
+    }, {
+    name: 'Fail',
+    data: {{fail}}
+    }]
+    });
+  </script>
+</body>
